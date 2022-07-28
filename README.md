@@ -21,4 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+==================
+if you want to brush up skills on html and css go to: learn.shayhowe.com and take course 101
+
