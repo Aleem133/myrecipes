@@ -4,10 +4,7 @@ class RecipesController < ApplicationController
         @recipes =Recipe.all
     end
 
-    def show
-        @recipe = Recipe.find(params[:id])
 
-    end
 
     def new
         @recipe = Recipe.new
@@ -17,7 +14,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new(recipe_params)
         @recipe.chef = Chef.first
         if @recipe.save
-            flash[:success]= "Recepie was Created Succesfully"
+            flash[:success]= "Recepie Created Succesfully"
             redirect_to recipe_path(@recipe)
         else
             render 'new'
@@ -25,13 +22,31 @@ class RecipesController < ApplicationController
     end
 
     def edit
-
+        @recipe = Recipe.find(params[:id])
     end
 
     def update
+        @recipe = Recipe.find(params[:id])
+        if @recipe.update(recipe_params)
+            flash[:success]= "Recepie updated Succesfully"
+            redirect_to recipe_path(@recipe)
+        else
+            render 'edit'
+        end 
+    end
+
+    def destroy
+        @recipe = Recipe.find(params[:id]).destroy
+        flash[:success]= "Recepie deleted Succesfully"
+        redirect_to recipe_path
 
     end
 
+    def show
+        @recipe = Recipe.find(params[:id])
+
+    end
+    
     private
     
     def recipe_params
