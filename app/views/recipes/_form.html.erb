@@ -1,8 +1,9 @@
 <%= render 'shared/errors', obj: @recipe %>
 
+
 <div class="row">
   <div class="col-md-12">
-    <%= form_for(@recipe, :html => {class: "form-horizontal", multipart: true, role: "form"}) do |f| %>
+    <%= form_for(@recipe, :html => {class: "form-horizontal", role: "form"}) do |f| %>
       <div class="form-group">
         <div class="control-label col-md-2">
           <%= f.label :name %>
@@ -19,23 +20,8 @@
           <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
         </div>
       </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-offset-2 col-md-8">
-            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
-              <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :image, "Add Image" %>
-        </div>
-        <div class="col-md-8">
-          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
-        </div>
-      </div>
+      
+
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
