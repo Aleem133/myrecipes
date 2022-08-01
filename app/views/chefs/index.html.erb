@@ -2,7 +2,6 @@
 
 
 <div align="center">
-  
   <% @chefs.each do |chef| %>
     <ul class="listing">
       <div class="row">
@@ -10,12 +9,9 @@
           <li><%= link_to gravatar_for(chef), chef_path(chef) %></li>
           <li class="chef-title"><%= link_to chef.chefname.capitalize, chef_path(chef) %></li>
           <li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %></small></li>
-          
-
-          
         </div>
       </div>
     </ul>
   <% end %>
-  
+  <%= will_paginate %>
 </div>
