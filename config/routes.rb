@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'pages/home', to: "pages#home"
 
   resources :recipes
+
+  get '/signup', to: 'chefs#new'
+  resources :chefs, except: [:new]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
